@@ -15,6 +15,7 @@ public class ServerInfo {
     private String ip;
     private int port;
     private String version;
+    private int 
 
     public ServerInfo() {
 
