@@ -34,9 +34,22 @@ public class ServerRoutes {
             } catch (Exception e) {
                 JavaPlugin.getPlugin(Main.class).getLogger().info(e.toString());
             }
-
             return "{}";
+        });
 
+        get("/api/server/system", (request, response) -> {
+          return "{}";
+        });
+
+        get("/api/server/spigot", (request, response) -> {
+          return "{}";
+        });
+
+        get("/api/server/stats", (request,response) -> {
+            return "{}";
+        });
+        get("/api/server/reload", (request,response) -> {
+          return "{}";
         });
 
         notFound((request, response) -> {

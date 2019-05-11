@@ -20,31 +20,42 @@ public class ServerInfo {
     private String version;
     private double ping;
 
+
+    SystemInfo info;
+    private String osFamily;
+    private String osManufacturer;
+
+    JavaPlugin pluginClass;
+
     //System Details for Expanded View
+
     public ServerInfo() {
 
-        this.name = JavaPlugin.getPlugin(Main.class).getServer().getServerName();
-        this.isOnline = JavaPlugin.getPlugin(Main.class).getServer().getOnlineMode();
+        this.info = new SystemInfo();
+        this.osFamily = this.info.getOperatingSystem().getFamily();
+        this.osManufacturer = this.info.getOperatingSystem().getManufacturer();
 
-        this.playerCount = JavaPlugin.getPlugin(Main.class).getServer().getOnlinePlayers().size();
-        this.maxPlayerCount = JavaPlugin.getPlugin(Main.class).getServer().getMaxPlayers();
-        this.players = JavaPlugin.getPlugin(Main.class).getServer().getOnlinePlayers();
+        this.pluginClass = JavaPlugin.getPlugin(Main.class);
 
-        this.ip = JavaPlugin.getPlugin(Main.class).getServer().getIp();
-        this.port = JavaPlugin.getPlugin(Main.class).getServer().getPort();
-        this.version = JavaPlugin.getPlugin(Main.class).getServer().getVersion();
+        this.name = this.pluginClass.getServer().getServerName();
+        this.isOnline = this.pluginClass.getServer().getOnlineMode();
+        this.playerCount = this.pluginClass.getServer().getOnlinePlayers().size();
+        this.maxPlayerCount = this.pluginClass.getServer().getMaxPlayers();
+        this.players = this.pluginClass.getServer().getOnlinePlayers();
+        this.ip = this.pluginClass.getServer().getIp();
+        this.port = this.pluginClass.getServer().getPort();
+        this.version = this.pluginClass.getServer().getVersion();
     }
 
 
 
     public JSONObject getSystemInfo() {
-        SystemInfo info = new SystemInfo();
          return new JSONObject()
                             .put("CPU", new JSONObject()
                                         .put("MODEL", "blah").toString())
                             .put("OS", new JSONObject()
-                                        .put("OS_FAMILY", info.getOperatingSystem().getFamily())
-                                        .put("OS_MANUFACTURER", info.getOperatingSystem().getManufacturer())
+                                        .put("OS_FAMILY", this.osFamily)
+                                        .put("OS_MANUFACTURER", this.osManufacturer)
                                         .put("OS_VERSION", info.getOperatingSystem().getVersion()).toString())
                             .put("MEMORY", new JSONObject()
                                         .put("AVAILABLE_MEMORY", info.getHardware().getMemory().getAvailable())
@@ -59,6 +70,7 @@ public class ServerInfo {
     public int getMaxPlayerCount() { return maxPlayerCount; }
 
     public ArrayList<String> getPlayers() {
+
         ArrayList<String> playerList = new ArrayList<>();
         this.players.forEach((p) -> {
            playerList.add(p.getDisplayName());
