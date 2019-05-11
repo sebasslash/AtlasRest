@@ -1,12 +1,11 @@
 package com.secondfrostgaming.atlasrest;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.json.JSONObject;
-import static spark.Spark.*;
 
 public class Main extends JavaPlugin {
 
     Thread server;
+    private int tps;
     @Override
     public void onEnable() {
         getLogger().info("Atlas REST plugin enabled");
@@ -19,4 +18,5 @@ public class Main extends JavaPlugin {
         getLogger().info("Atlas REST plugin disabled");
         server.interrupt();
     }
+
 }

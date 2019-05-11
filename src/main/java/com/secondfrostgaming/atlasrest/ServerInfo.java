@@ -2,7 +2,10 @@ package com.secondfrostgaming.atlasrest;
 
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.json.JSONObject;
+import oshi.SystemInfo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -15,8 +18,9 @@ public class ServerInfo {
     private String ip;
     private int port;
     private String version;
-    private int 
+    private double ping;
 
+    //System Details for Expanded View
     public ServerInfo() {
 
         this.name = JavaPlugin.getPlugin(Main.class).getServer().getServerName();
@@ -31,6 +35,21 @@ public class ServerInfo {
         this.version = JavaPlugin.getPlugin(Main.class).getServer().getVersion();
     }
 
+
+
+    public JSONObject getSystemInfo() {
+        SystemInfo info = new SystemInfo();
+         return new JSONObject()
+                            .put("CPU", new JSONObject()
+                                        .put("MODEL", "blah").toString())
+                            .put("OS", new JSONObject()
+                                        .put("OS_FAMILY", info.getOperatingSystem().getFamily())
+                                        .put("OS_MANUFACTURER", info.getOperatingSystem().getManufacturer())
+                                        .put("OS_VERSION", info.getOperatingSystem().getVersion()).toString())
+                            .put("MEMORY", new JSONObject()
+                                        .put("AVAILABLE_MEMORY", info.getHardware().getMemory().getAvailable())
+                                        .put("TOTAL_MEMORY", info.getHardware().getMemory().getTotal()));
+    }
     public String getName() { return name; }
 
     public boolean isOnline() { return isOnline; }
@@ -39,7 +58,14 @@ public class ServerInfo {
 
     public int getMaxPlayerCount() { return maxPlayerCount; }
 
-    public Collection<? extends Player> getPlayers() { return players; }
+    public ArrayList<String> getPlayers() {
+        ArrayList<String> playerList = new ArrayList<>();
+        this.players.forEach((p) -> {
+           playerList.add(p.getDisplayName());
+        });
+
+        return playerList;
+    }
 
     public String getIp() { return ip; }
 
