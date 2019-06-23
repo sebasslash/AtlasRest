@@ -2,6 +2,7 @@ package com.secondfrostgaming.atlasrest.Server;
 
 
 import com.secondfrostgaming.atlasrest.Main;
+import com.secondfrostgaming.atlasrest.Path;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.JSONObject;
 
@@ -16,7 +17,7 @@ public class ServerRoutes {
 
     public ServerRoutes() {
 
-        get("/api/server/info", (request, response) -> {
+        get(Path.Web.SERVER_INFO, (request, response) -> {
             server = getServerInfo();
             JavaPlugin.getPlugin(Main.class).getLogger().info("HTTP [GET] : /api/server/info");
             response.type("application/json");
@@ -39,24 +40,24 @@ public class ServerRoutes {
             return "{}";
         });
 
-        get("/api/server/system", (request, response) -> {
+        get(Path.Web.SERVER_SYSTEM, (request, response) -> {
             response.type("application/json");
           return "{}";
         });
 
-        get("/api/server/spigot", (request, response) -> {
+        get(Path.Web.SERVER_SPIGOT, (request, response) -> {
             response.type("application/json");
           return "{}";
         });
 
-        get("/api/server/stats", (request,response) -> {
+        get(Path.Web.SERVER_STATS, (request,response) -> {
             response.type("application/json");
 
             return "{}";
         });
 
         // Reloads the entire server
-        post("/api/server/reload", (request,response) -> {
+        post(Path.Web.SERVER_RELOAD, (request,response) -> {
             response.type("application/json");
             try {
                 JavaPlugin.getPlugin(Main.class).getServer().reload();
