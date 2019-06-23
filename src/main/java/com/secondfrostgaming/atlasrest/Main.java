@@ -9,6 +9,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Atlas REST plugin enabled");
+        getServer().getPluginManager().registerEvents(new LoginListener(), this);
         server = new Thread(new AtlasServer());
         server.run();
     }

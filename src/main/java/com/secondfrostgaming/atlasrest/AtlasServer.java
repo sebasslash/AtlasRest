@@ -1,6 +1,8 @@
 package com.secondfrostgaming.atlasrest;
 
 
+import com.secondfrostgaming.atlasrest.Server.ServerRoutes;
+
 import static spark.Spark.*;
 
 public class AtlasServer implements Runnable{

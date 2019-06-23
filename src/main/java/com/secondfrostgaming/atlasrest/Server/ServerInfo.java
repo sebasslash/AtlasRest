@@ -1,5 +1,6 @@
-package com.secondfrostgaming.atlasrest;
+package com.secondfrostgaming.atlasrest.Server;
 
+import com.secondfrostgaming.atlasrest.Main;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.JSONObject;
