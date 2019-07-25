@@ -38,7 +38,13 @@ public class ServerInfo {
 
         this.pluginClass = JavaPlugin.getPlugin(Main.class);
 
-        this.name = this.pluginClass.getServer().getServerName();
+
+
+
+
+
+//        this.name = this.pluginClass.getServer().getServerName();
+        this.name = this.pluginClass.getServer().getName();
         this.isOnline = this.pluginClass.getServer().getOnlineMode();
         this.playerCount = this.pluginClass.getServer().getOnlinePlayers().size();
         this.maxPlayerCount = this.pluginClass.getServer().getMaxPlayers();

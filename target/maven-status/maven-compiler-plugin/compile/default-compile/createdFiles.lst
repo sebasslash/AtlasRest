@@ -1,5 +1,8 @@
-com/secondfrostgaming/atlasrest/ServerRoutes.class
-com/secondfrostgaming/atlasrest/Main.class
-com/secondfrostgaming/atlasrest/AtlasServer.class
+com/secondfrostgaming/atlasrest/Path$Web.class
+com/secondfrostgaming/atlasrest/Server/ServerRoutes.class
+com/secondfrostgaming/atlasrest/Player/PlayerRoutes.class
+com/secondfrostgaming/atlasrest/Server/ServerInfo.class
 com/secondfrostgaming/atlasrest/LoginListener.class
-com/secondfrostgaming/atlasrest/ServerInfo.class
+com/secondfrostgaming/atlasrest/Main.class
+com/secondfrostgaming/atlasrest/Path.class
+com/secondfrostgaming/atlasrest/AtlasServer.class

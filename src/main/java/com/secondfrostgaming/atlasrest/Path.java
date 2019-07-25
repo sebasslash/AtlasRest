@@ -11,6 +11,6 @@ public class Path {
 
         private final static String API_PLAYER = "api/player";
         public final static String PLAYER_MSG = API_PLAYER + "/msg/:name";
-        public final static String PLAYER_MSG_ALL = API_PLAYER + "/msg/all";
+        public final static String PLAYER_MSG_ALL = API_PLAYER + "/broadcast";
     }
 }
